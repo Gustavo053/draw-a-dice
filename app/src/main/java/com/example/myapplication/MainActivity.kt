@@ -164,10 +164,10 @@ fun App() {
         .fillMaxSize()
         .background(Color.Black)
     ) {
-        var guessState by remember { mutableStateOf(0) }
+        var diceGuessState by remember { mutableStateOf(0) }
         var guess by remember { mutableStateOf("0") }
 
-        Dice(guessState, modifier = Modifier.align(Alignment.TopCenter))
+        Dice(diceGuessState, modifier = Modifier.align(Alignment.Center).offset(y = (-250).dp))
 
         TextField(
             value = guess,
@@ -176,7 +176,7 @@ fun App() {
             },
             modifier = Modifier
                 .align(Alignment.Center)
-                .offset(y = (40).dp),
+                .offset(y = (60).dp),
             label = {Text("Escolha o dado de 1 a 6")}
         )
         Button(
@@ -186,7 +186,7 @@ fun App() {
                       } else {
                           if (isNumeric(guess)) {
                               try {
-                                  guessState = guess.toInt()
+                                  diceGuessState = guess.toInt()
                               } catch (e: Exception) {
                                   Toast.makeText(context, "Escolha um número inteiro válido", Toast.LENGTH_SHORT).show()
                               }
@@ -197,7 +197,7 @@ fun App() {
             },
             modifier = Modifier
                 .align(Alignment.Center)
-                .offset(y = (100).dp)
+                .offset(y = (120).dp)
         ) {
             Text("Jogar")
         }
